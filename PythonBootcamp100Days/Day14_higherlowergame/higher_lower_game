@@ -1,0 +1,39 @@
+import art 
+from replit import clear
+from game_data import data
+import random
+
+
+def print_data(dict):
+  name = dict["name"]
+  description = dict["description"]
+  country = dict["country"]
+  return f"{name}, a {description}, from {country}"
+      
+def comparision(the_first, the_second, guess):
+  if the_first > the_second:
+    return guess == "A"
+  else:
+    return guess == "B"
+  
+def play():
+  print(art.logo)
+  score = 0
+  while True:
+    account1 = random.choice(data)
+    account2 = random.choice(data)
+    print(print_data(account1))
+    print(art.vs)
+    print(print_data(account2))
+    choice = input("who has more followers? Type 'A' or 'B': ").strip().upper()
+    result = comparision(account1["follower_count"], account2["follower_count"], choice)
+    clear()
+    print(art.logo)
+    if result:
+      score += 1
+      print(f"You're right! Current score: {score}.")
+    else:
+      print(f"Sorry, that's wrong. Final score: {score}")
+      break
+
+play()
