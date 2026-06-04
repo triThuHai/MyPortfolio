@@ -1,6 +1,6 @@
 import random
-from art import logo
-from replit import clear
+import os
+from art_blackjack import logo
 
 def prompt_card():
     '''Draw a card number from list'''
@@ -68,6 +68,9 @@ def run():
     print(f"Player: {player_list}, score: {player_score}")
     print(f"Computer: {computer_list}, score: {computer_score}")
     print(compare_score(player_score, computer_score))
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
         
 
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
