@@ -1,5 +1,5 @@
-import art 
-from replit import clear
+import os
+import art_higher_lower
 from game_data import data
 import random
 
@@ -17,23 +17,26 @@ def comparision(the_first, the_second, guess):
     return guess == "B"
   
 def play():
-  print(art.logo)
+  print(art_higher_lower.logo)
   score = 0
   while True:
     account1 = random.choice(data)
     account2 = random.choice(data)
     print(print_data(account1))
-    print(art.vs)
+    print(art_higher_lower.vs)
     print(print_data(account2))
     choice = input("who has more followers? Type 'A' or 'B': ").strip().upper()
     result = comparision(account1["follower_count"], account2["follower_count"], choice)
     clear()
-    print(art.logo)
+    print(art_higher_lower.logo)
     if result:
       score += 1
       print(f"You're right! Current score: {score}.")
     else:
       print(f"Sorry, that's wrong. Final score: {score}")
       break
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 play()
